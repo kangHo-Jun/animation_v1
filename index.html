@@ -1,7 +1,7 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@js(/layout/basic/js/main.js)-->
 <!--@css(/layout/basic/css/main.css)-->
-<!-- 몽땅자재 프리미엄 애니메이션 v2 시작 (Antigravity 테마) -->
+<!-- 몽땅자재 프리미엄 애니메이션 v2.1 시작 (Brighter & Dynamic) -->
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
 
@@ -12,24 +12,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: #fcfcfc;
-		/* Off-white background */
+		background-color: #ffffff;
+		/* Pure White */
 		overflow: hidden;
 		font-family: 'Outfit', 'Noto Sans KR', sans-serif;
-	}
-
-	/* Grain Texture */
-	.mongtang-hero::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');
-		opacity: 0.03;
-		pointer-events: none;
-		z-index: 1;
 	}
 
 	#magnetic-grid {
@@ -50,8 +36,7 @@
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		color: #1a1a1a;
-		/* Dark text for light theme */
+		color: #000000;
 		pointer-events: none;
 	}
 
@@ -62,8 +47,8 @@
 	.mongtang-label {
 		font-size: 0.85rem;
 		letter-spacing: 0.4em;
-		color: #0066FF;
-		/* Antigravity Blue */
+		color: #007BFF;
+		/* Vibrant Neon Blue */
 		font-weight: 700;
 		margin-bottom: 25px;
 		text-transform: uppercase;
@@ -72,30 +57,30 @@
 	}
 
 	.mongtang-title {
-		font-size: clamp(3.5rem, 12vw, 6rem);
+		font-size: clamp(3.5rem, 12vw, 6.5rem);
 		font-weight: 900;
 		margin: 0 0 20px 0;
 		line-height: 1;
-		letter-spacing: -0.04em;
+		letter-spacing: -0.05em;
 		color: #000;
 		opacity: 0;
 		animation: fadeInUp 1s forwards 0.4s;
 	}
 
 	.mongtang-desc {
-		font-size: 1.2rem;
+		font-size: 1.25rem;
 		font-weight: 400;
 		opacity: 0;
 		margin-bottom: 45px;
 		letter-spacing: 0.02em;
-		color: #555;
+		color: #333;
 		animation: fadeInUp 1s forwards 0.6s;
 	}
 
-	/* PREMIUM SEARCH BAR (Antigravity Style) */
+	/* PREMIUM SEARCH BAR (Antigravity Style - Minimal) */
 	.mongtang-search-form {
 		width: 100%;
-		max-width: 580px;
+		max-width: 600px;
 		margin-bottom: 50px;
 		opacity: 0;
 		animation: fadeInUp 1s forwards 0.8s;
@@ -105,17 +90,17 @@
 		position: relative;
 		display: flex;
 		align-items: center;
-		background: #fff;
-		border: 1px solid #e0e0e0;
+		background: #fafafa;
+		border: 1px solid #eeeeee;
 		border-radius: 100px;
 		padding: 5px 5px 5px 30px;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 		transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
 
 	.mongtang-search-container:focus-within {
-		border-color: #0066FF;
-		box-shadow: 0 15px 40px rgba(0, 102, 255, 0.08);
+		border-color: #007BFF;
+		background: #ffffff;
+		box-shadow: 0 10px 40px rgba(0, 123, 255, 0.12);
 		transform: translateY(-2px);
 	}
 
@@ -124,21 +109,21 @@
 		background: none;
 		border: none;
 		color: #000;
-		font-size: 1.15rem;
+		font-size: 1.2rem;
 		outline: none;
-		padding: 14px 0;
+		padding: 15px 0;
 		font-family: inherit;
 	}
 
 	.mongtang-search-input::placeholder {
-		color: #bbb;
+		color: #cccccc;
 	}
 
 	.mongtang-search-btn {
-		background: #0066FF;
+		background: #007BFF;
 		border: none;
-		width: 52px;
-		height: 52px;
+		width: 56px;
+		height: 56px;
 		border-radius: 50%;
 		color: #fff;
 		cursor: pointer;
@@ -149,7 +134,7 @@
 	}
 
 	.mongtang-search-btn i {
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 	}
 
 	.mongtang-search-btn:hover {
@@ -169,9 +154,9 @@
 	.mongtang-btn {
 		flex: 1;
 		padding: 22px;
-		background: #fff;
-		border: 1px solid #eee;
-		border-radius: 14px;
+		background: #ffffff;
+		border: 1px solid #f0f0f0;
+		border-radius: 15px;
 		color: #000;
 		text-decoration: none;
 		font-weight: 700;
@@ -181,24 +166,22 @@
 		justify-content: center;
 		gap: 12px;
 		transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 	}
 
 	.mongtang-btn i {
 		font-size: 1.2rem;
-		color: #0066FF;
+		color: #007BFF;
 		transition: transform 0.3s;
 	}
 
 	.mongtang-btn:hover {
-		background: #fdfdfd;
-		border-color: #0066FF;
+		border-color: #007BFF;
 		transform: translateY(-5px);
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 	}
 
 	.mongtang-btn:hover i {
-		transform: translateX(3px);
+		transform: translateX(5px);
 	}
 
 	@keyframes fadeInUp {
@@ -224,7 +207,7 @@
 		}
 
 		.mongtang-title {
-			font-size: 3.5rem;
+			font-size: 3.8rem;
 		}
 
 		.mongtang-search-form {
@@ -265,16 +248,18 @@
 
 <script>
 	/**
-	 * MAGNETIC GRID ENGINE (Antigravity Theme)
-	 * Direct Canvas API Implementation
+	 * MAGNETIC GRID ENGINE v2.1 (Hyper Dynamic)
 	 */
 	const canvas = document.getElementById('magnetic-grid');
 	const ctx = canvas.getContext('2d');
 	let width, height, rows, cols;
-	const spacing = 45; // Grid spacing
-	const dashLength = 12; // Length of each dash
+	const spacing = 50; // Increased spacing for more air
+	const dashLength = 10;
 	const particles = [];
-	let mouse = { x: -1000, y: -1000 };
+	let mouse = {
+		x: -1000,
+		y: -1000
+	};
 
 	function init() {
 		resize();
@@ -285,8 +270,8 @@
 	function resize() {
 		width = canvas.width = window.innerWidth;
 		height = canvas.height = canvas.parentElement.offsetHeight;
-		cols = Math.floor(width / spacing) + 2;
-		rows = Math.floor(height / spacing) + 2;
+		cols = Math.ceil(width / spacing) + 1;
+		rows = Math.ceil(height / spacing) + 1;
 	}
 
 	function createParticles() {
@@ -298,8 +283,7 @@
 					baseY: j * spacing,
 					x: i * spacing,
 					y: j * spacing,
-					targetX: i * spacing,
-					targetY: j * spacing,
+					angle: 0,
 					stretch: 1
 				});
 			}
@@ -309,36 +293,35 @@
 	function animate() {
 		ctx.clearRect(0, 0, width, height);
 
-		ctx.strokeStyle = '#0066FF'; // Electric Blue
-		ctx.lineWidth = 1.5;
+		ctx.strokeStyle = '#007BFF'; // Vibrant Neon Blue
+		ctx.lineWidth = 2;
 		ctx.lineCap = 'round';
 
 		particles.forEach(p => {
 			const dx = mouse.x - p.baseX;
 			const dy = mouse.y - p.baseY;
 			const dist = Math.sqrt(dx * dx + dy * dy);
-			const maxDist = 350;
+			const maxDist = 450; // Wider influence
 
 			if (dist < maxDist) {
 				const force = (maxDist - dist) / maxDist;
 				const angle = Math.atan2(dy, dx);
 
-				// Rotation and Stretching logic
-				p.x = p.baseX + Math.cos(angle) * force * 20;
-				p.y = p.baseY + Math.sin(angle) * force * 20;
-				p.stretch = 1 + force * 2.5;
+				// Hyper-Dynamic Stretching
+				p.x = p.baseX + Math.cos(angle) * force * 30;
+				p.y = p.baseY + Math.sin(angle) * force * 30;
+				p.stretch = 1 + force * 4.5;
 				p.angle = angle;
 			} else {
-				p.x += (p.baseX - p.x) * 0.1;
-				p.y += (p.baseY - p.y) * 0.1;
-				p.stretch += (1 - p.stretch) * 0.1;
+				p.x += (p.baseX - p.x) * 0.15;
+				p.y += (p.baseY - p.y) * 0.15;
+				p.stretch += (1 - p.stretch) * 0.15;
 				p.angle = 0;
 			}
 
-			// Draw particle (dash)
 			ctx.save();
 			ctx.translate(p.x, p.y);
-			if (dist < maxDist) ctx.rotate(p.angle);
+			if (p.stretch > 1.1) ctx.rotate(p.angle);
 
 			ctx.beginPath();
 			ctx.moveTo(-dashLength / 2 * p.stretch, 0);
@@ -363,7 +346,7 @@
 
 	init();
 </script>
-<!-- 몽땅자재 프리미엄 애니메이션 v2 끝 -->
+<!-- 몽땅자재 프리미엄 애니메이션 v2.1 끝 -->
 
 <section class="section main_product_list" data-ez-initialized data-ez-layout="grid4" data-ez-module="product-list/1"
 	data-ez="contents-0wj12i1-1">
