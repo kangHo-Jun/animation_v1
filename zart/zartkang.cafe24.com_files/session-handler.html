@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://ca-log.cafe24data.com/session-handler -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CAFE24 Analytics</title>
+</head>
+<body>
+<script>
+    (function() {
+        const permanentStorageKey = "cafe24_permanent_id";
+        const sessionStorageKey = "cafe24_session_id";
+        const permanentId = "f10123e9f714498ead887fd6a22a8577.9d3c803d9625a188";
+        const sessionId = "50879bc42ef949178f631292fe201b31.9faea1f10735332c";
+
+        // 세션스토리지에 저장
+        sessionStorage.setItem(sessionStorageKey, sessionId);
+
+        parent.postMessage(JSON.stringify({
+            method: "setIds",
+            params: {
+                permanentId: permanentId,
+                sessionId: sessionId
+            }
+        }), '*');
+    })();
+</script>
+
+
+</body></html>

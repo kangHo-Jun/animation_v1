@@ -1,0 +1,452 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/layout/basic/js/main.js)-->
+<!--@css(/layout/basic/css/main.css)-->
+<!-- 대장간 프리미엄 애니메이션 v1 시작 -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+
+    .forge-hero {
+        position: relative;
+        width: 100%;
+        min-height: 550px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #050505;
+        overflow: hidden;
+        font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+    }
+    #vanta-waves {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100% !important; height: 100% !important;
+        z-index: 0;
+    }
+    .forge-container {
+        position: relative;
+        z-index: 10;
+        width: 90%;
+        max-width: 1100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        pointer-events: none;
+    }
+    .forge-container > * { pointer-events: auto; }
+
+    .forge-label {
+        font-size: 0.9rem;
+        letter-spacing: 0.3em;
+        color: #FFAB40;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        opacity: 0;
+        animation: fadeInUp 0.8s forwards 0.2s;
+    }
+    .forge-title {
+        font-size: clamp(3rem, 10vw, 5.5rem);
+        font-weight: 900;
+        margin: 0 0 15px 0;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        opacity: 0;
+        animation: fadeInUp 0.8s forwards 0.4s;
+    }
+    .forge-desc {
+        font-size: 1.1rem;
+        font-weight: 400;
+        opacity: 0;
+        margin-bottom: 50px;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.7);
+        animation: fadeInUp 0.8s forwards 0.6s;
+    }
+
+    .forge-buttons {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        max-width: 600px;
+        opacity: 0;
+        animation: fadeInUp 0.8s forwards 0.8s;
+    }
+    .forge-btn {
+        flex: 1;
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 12px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .forge-btn i { font-size: 1.2rem; color: #FFAB40; transition: transform 0.3s; }
+    .forge-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: #FFAB40;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+    .forge-btn:hover i { transform: scale(1.2); }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .forge-buttons { flex-direction: column; gap: 12px; }
+        .forge-hero { min-height: 600px; }
+        .forge-title { font-size: 3rem; }
+    }
+</style>
+
+<section class="forge-hero">
+    <div id="vanta-waves"></div>
+    <div class="forge-container">
+        <span class="forge-label">Premium Tools & Craft</span>
+        <h1 class="forge-title">대장간</h1>
+        <p class="forge-desc">장인의 정신으로 빚어낸 완벽한 결과물</p>
+        
+        <div class="forge-buttons">
+            <a href="/product/list.html" class="forge-btn">
+                <i class="fas fa-th-large"></i>
+                <span>전체상품</span>
+            </a>
+            <a href="/board/free/list.html" class="forge-btn">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>최신 단가표</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+<script>
+    function startForgeVanta() {
+        if (typeof VANTA !== 'undefined') {
+            VANTA.WAVES({
+                el: "#vanta-waves",
+                mouseControls: true, touchControls: true, gyroControls: false,
+                minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
+                color: 0x080808, shininess: 35.00, waveHeight: 20.00, waveSpeed: 0.80, zoom: 0.95
+            });
+        }
+    }
+    if (document.readyState === 'complete') { startForgeVanta(); }
+    else { window.addEventListener('load', startForgeVanta); }
+</script>
+<!-- 대장간 프리미엄 애니메이션 v1 끝 -->
+
+<section class="section main_product_list" data-ez-initialized data-ez-layout="grid4" data-ez-module="product-list/1" data-ez="contents-0wj12i1-1">
+<ez-prop data-version="1.0.0" type="layout">
+<ez-var data-namespace="ez.module.product-list.layout" data-prop="layout" data-type="array">
+<ez-item data-id="grid3" data-name="일반3단형(PC 3열/MOBILE 1열)"></ez-item>
+<ez-item data-id="grid4" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid5" data-name="일반5단형(PC 5열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid3 list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 1열)"></ez-item>
+<ez-item data-id="grid4 list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid5 list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 2열)"></ez-item>
+</ez-var>
+</ez-prop>
+<div class="main_title ez-align-left" data-ez-align="left" data-ez-role="ez-align"><!-- 이번주의 입고상품 타이틀 수정하는곳 -->
+<div class="main_title_txt01" data-ez-role="title">작업의 질을 높이는 공구</div>
+<div class="main_title_txt02" data-ez-role="subtitle">전문가부터 초보자까지 모두를 위한 필수 아이템</div>
+</div><!-- //main_title -->
+<div data-ez-holder="product_listmain">
+<div class="ec-base-product" module="product_listmain_2">
+<!--
+				$count = 8
+				$basket_result = /product/add_basket.html
+				$basket_option = /product/basket_option.html
+				$moreview = yes
+				$cache = yes
+			-->
+<ul class="prdList grid4" data-ez-role="layout ez-discount-tag">
+<!--@import(/product/list_product.html)-->
+</ul>
+</div>
+<div class="more" module="product_listmore_1">
+<a class="btnMore" href="#none" onclick="{$more_action}">More +</a>
+</div>
+</div>
+</section>
+<section class="section main_image_text_gallery" data-ez-item-length="3" data-ez-module="image-gallery/2" data-ez-role="style.background" data-ez="contents-0wt2c4z-1">
+<ez-prop data-version="1.0.0" type="layout">
+<ez-var data-namespace="ez.module.image-gallery.image" data-prop="image">
+<ez-item data-id="size" data-mobile="480 480" data-pc="480 480"></ez-item>
+</ez-var>
+<ez-var data-namespace="ez.module.image-gallery.display" data-prop="display">
+<ez-item data-id="item" data-max="10"></ez-item>
+<ez-item data-default="3" data-id="column" data-max="5" data-min="1"></ez-item>
+</ez-var>
+<ez-var data-namespace="ez.module.image-gallery.layout" data-prop="layout">
+<ez-item data-default="slide" data-id="mobile">
+<ez-item data-id="options" data-type="array">
+<ez-item data-id="slide" data-name="슬라이드"></ez-item>
+<ez-item data-id="more" data-name="더보기"></ez-item>
+<ez-item data-id="none" data-name="사용안함"></ez-item>
+</ez-item>
+</ez-item>
+</ez-var>
+</ez-prop>
+<div class="main_title ez-align-left" data-ez-align="left" data-ez-role="ez-align"><!-- 라이프스타일 타이틀 수정하는곳 -->
+<div class="main_title_txt01" data-ez-role="title">완성도를 높이는 디테일</div>
+<div class="main_title_txt02" data-ez-role="desc">작업의 모든 순간, 우리 공구와 함께 빛나세요.</div>
+</div><!-- //main_title -->
+<div class="main_3dan_banner ez-mobile-layout-slide" data-ez-mobile-layout="slide" data-ez-role="ez-mobile-layout"><!-- 메인 3단배너 수정하는곳 -->
+<ul class="ez-column-3" data-ez-column="3" data-ez-role="image-list ez-column">
+<li data-ez-role="image-item ez-align">
+<a data-ez-role="a" href="#" target="_self">
+<picture>
+<source data-ez-role="img-pc" media="(max-width: 1024px)" srcset="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/57ee4940584208fcaf7e6af0d0a6ce23.jpg">
+<img data-ez-role="img-mobile" loading="lazy" src="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/57ee4940584208fcaf7e6af0d0a6ce23.jpg">
+</picture>
+<div class="main_3dan_banner_txt">
+<div class="main_3dan_banner_txt01" data-ez-role="title">루미나 고성능 전기 원형톱</div>
+<div class="main_banner_more" data-ez-role="desc">자세히 살펴보기</div>
+</div><!-- //main_3dan_banner_txt -->
+</a>
+</li>
+<li data-ez-role="image-item ez-align">
+<a data-ez-role="a" href="#" target="_self">
+<picture>
+<source data-ez-role="img-pc" media="(max-width: 1024px)" srcset="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/2cce563b63cb50d88f754e636b860dd6.jpg">
+<img data-ez-role="img-mobile" loading="lazy" src="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/2cce563b63cb50d88f754e636b860dd6.jpg">
+</picture>
+<div class="main_3dan_banner_txt">
+<div class="main_3dan_banner_txt01" data-ez-role="title">아쿠아마린 소프트 폼롤러</div>
+<div class="main_banner_more" data-ez-role="desc">자세히 살펴보기</div>
+</div><!-- //main_3dan_banner_txt -->
+</a>
+</li>
+<li data-ez-role="image-item ez-align">
+<a data-ez-role="a" href="#" target="_self">
+<picture>
+<source data-ez-role="img-pc" media="(max-width: 1024px)" srcset="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/0a67f580840870f7cdb6ee7673c6901a.jpg">
+<img data-ez-role="img-mobile" loading="lazy" src="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/0a67f580840870f7cdb6ee7673c6901a.jpg">
+</picture>
+<div class="main_3dan_banner_txt">
+<div class="main_3dan_banner_txt01" data-ez-role="title">아르테미스 휴대용 조명 스탠드 세트</div>
+<div class="main_banner_more" data-ez-role="desc">자세히 살펴보기</div>
+</div><!-- //main_3dan_banner_txt -->
+</a>
+</li>
+</ul>
+<div class="main_image_text_gallery_more"><a class="main_image_text_gallery_more_btn" href="#none">더보기</a></div>
+</div><!-- //main_3dan_banner -->
+</section>
+<section class="section main_product_slide" data-ez-initialized data-ez-layout="grid5_slide" data-ez-module="product-list-slide/2" data-ez="contents-0xvfwfx-1">
+<ez-prop data-version="1.0.0" type="layout">
+<ez-var data-namespace="ez.module.product-list-slide.layout" data-prop="layout" data-type="array">
+<ez-item data-id="grid3_slide" data-name="일반3단형(PC 3열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid4_slide" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid5_slide" data-name="일반5단형(PC 5열/MOBILE 3열)"></ez-item>
+<ez-item data-id="grid3_slide list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid4_slide list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid5_slide list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 3열)"></ez-item>
+</ez-var>
+</ez-prop>
+<div class="main_title ez-align-left" data-ez-align="left" data-ez-role="ez-align"><!-- 위클리하이라이트 타이틀 수정하는곳 -->
+<div class="main_title_txt01" data-ez-role="title">지금 주목해야 할 공구</div>
+<div class="main_title_txt02" data-ez-role="subtitle">당신의 작업을 한 단계 업그레이드할 기회입니다.</div>
+</div><!-- //main_title -->
+<div data-ez-holder="product_listmain">
+<div class="ec-base-product swiper-container highlight_slide" module="product_listmain_3">
+<ul class="swiper-wrapper prdList grid5_slide" data-ez-role="layout ez-discount-tag">
+<!--@import(/product/list_product_slide.html)-->
+</ul>
+<div class="swiper-pagination swiper-pagination-highlight_product"></div>
+</div>
+</div>
+<div class="swiper-prev swiper-prev-highlight_product"></div>
+<div class="swiper-next swiper-next-highlight_product"></div>
+</section>
+<section class="section main_text ez-textsize-medium ez-align-center" data-ez-align="center" data-ez-module="text/1" data-ez-role="style.background" data-ez-textsize="medium" data-ez="contents-02jmksd-1">
+<div class="main_long_banner"><!-- 메인 롱배너 -->
+<div class="main_long_banner_txt">
+<div class="main_long_banner_txt01" data-ez-role="title">공구, 단순한 도구를 넘어</div>
+<div class="main_long_banner_txt02" data-ez-role="desc"><p><span>정밀함과 강력한 힘으로 당신의 창의력을 현실로 만듭니다. 모든 작업에 완벽함을 더하는 최고의 파트너를 만나보세요.</span></p></div>
+<div class="main_text_link"><a data-ez-role="a" href="#" target="_self">자세히 보기</a></div>
+</div><!-- //main_long_banner_txt -->
+</div><!-- //main_long_banner -->
+</section>
+<section class="section main_product_category" data-ez-initialized data-ez-layout="grid4_slide" data-ez-module="product-list-category/2" data-ez="contents-1usdfiy-1">
+<ez-prop data-version="1.0.0" type="layout">
+<ez-var data-namespace="ez.module.product-list-category.layout" data-prop="layout" data-type="array">
+<ez-item data-id="grid3_slide" data-name="일반3단형(PC 3열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid4_slide" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid5_slide" data-name="일반5단형(PC 5열/MOBILE 3열)"></ez-item>
+<ez-item data-id="grid3_slide list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid4_slide list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+<ez-item data-id="grid5_slide list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 3열)"></ez-item>
+</ez-var>
+</ez-prop>
+<div class="main_product_inner">
+<div class="main_title ez-align-left" data-ez-align="left" data-ez-role="ez-align"><!-- 에디터가 직접 선정한 트랜드픽 타이틀 수정하는곳 -->
+<div class="main_title_txt01" data-ez-role="title">당신에게 딱 맞는 공구</div>
+<div class="main_title_txt02" data-ez-role="subtitle">필요한 모든 것을 한눈에 비교하고 선택하세요.</div>
+</div><!-- //main_title -->
+<ul class="main_product_tab" data-ez-role="tab-list">
+<li data-ez-role="tab-item"><button class="button" data-ez-role="name" data-id="tabContent1" data-name="베스트셀러 공구" type="button">베스트셀러 공구</button></li>
+<li data-ez-role="tab-item"><button class="button" data-ez-role="name" data-id="tabContent2" data-name="입문자 추천" type="button">입문자 추천</button></li>
+<li data-ez-role="tab-item"><button class="button" data-ez-role="name" data-id="tabContent3" data-name="전문가용 공구" type="button">전문가용 공구</button></li>
+<li data-ez-role="tab-item"><button class="button" data-ez-role="name" data-id="tabContent4" data-name="기간 한정 특가" type="button">기간 한정 특가</button></li>
+</ul><!-- //main_product_tab -->
+</div><!-- //main_product_inner -->
+<div class="content_list" data-ez-role="content-list">
+<div class="tabcontent" data-ez-role="content-item" id="tabContent1">
+<div data-ez-holder="product_listmain">
+<div class="ec-base-product swiper-container swiper03" module="product_listmain_1">
+<!--
+						$count = 100
+						$basket_result = /product/add_basket.html
+						$basket_option = /product/basket_option.html
+						$moreview = no
+						$cache = no
+					-->
+<ul class="prdList grid4_slide swiper-wrapper" data-ez-role="layout ez-discount-tag">
+<!--@import(/product/list_product_slide.html)-->
+</ul>
+<div class="swiper-scrollbar swiper-scrollbar_swiper03"></div>
+</div>
+</div>
+</div><!-- //tabContent1 -->
+<div class="tabcontent" data-ez-role="content-item" id="tabContent2">
+<div data-ez-holder="product_listmain">
+<div class="ec-base-product swiper-container swiper03" module="product_listmain_2">
+<!--
+						$count = 100
+						$basket_result = /product/add_basket.html
+						$basket_option = /product/basket_option.html
+						$moreview = no
+						$cache = no
+					-->
+<ul class="prdList grid4_slide swiper-wrapper" data-ez-role="layout ez-discount-tag">
+<!--@import(/product/list_product_slide.html)-->
+</ul>
+<div class="swiper-scrollbar swiper-scrollbar_swiper03"></div>
+</div>
+</div>
+</div><!-- //tabContent2 -->
+<div class="tabcontent" data-ez-role="content-item" id="tabContent3">
+<div data-ez-holder="product_listmain">
+<div class="ec-base-product swiper-container swiper03" module="product_listmain_3">
+<!--
+						$count = 100
+						$basket_result = /product/add_basket.html
+						$basket_option = /product/basket_option.html
+						$moreview = no
+						$cache = no
+					-->
+<ul class="prdList grid4_slide swiper-wrapper" data-ez-role="layout ez-discount-tag">
+<!--@import(/product/list_product_slide.html)-->
+</ul>
+<div class="swiper-scrollbar swiper-scrollbar_swiper03"></div>
+</div>
+</div>
+</div><!-- //tabContent3 -->
+<div class="tabcontent" data-ez-role="content-item" id="tabContent4">
+<div data-ez-holder="product_listmain">
+<div class="ec-base-product swiper-container swiper03" module="product_listmain_4">
+<!--
+						$count = 100
+						$basket_result = /product/add_basket.html
+						$basket_option = /product/basket_option.html
+						$moreview = no
+						$cache = no
+					-->
+<ul class="prdList grid4_slide swiper-wrapper" data-ez-role="layout ez-discount-tag">
+<!--@import(/product/list_product_slide.html)-->
+</ul>
+<div class="swiper-scrollbar swiper-scrollbar_swiper03"></div>
+</div>
+</div>
+</div><!-- //tabContent4 -->
+</div><!-- //content_list -->
+</section>
+<section class="section main_map ez-align-left" data-ez-align="left" data-ez-module="map/1" data-ez="contents-007c9je-1">
+<ez-prop data-version="1.0.0" type="layout">
+<ez-var data-namespace="ez.module.map.image" data-prop="image">
+<ez-item data-id="size" data-mobile="830 520" data-pc="830 520"></ez-item>
+</ez-var>
+</ez-prop>
+<div class="main_map_banner"><!-- 메인 지도 -->
+<div class="wrap_banner_txt">
+<div class="main_map_banner_txt01" data-ez-role="title">OFFLINE SHOP</div>
+</div>
+<picture>
+<source data-ez-role="img-pc" media="(max-width: 1024px)" srcset="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/8efc55a2d235996aad2b4cebf4d33edc.jpg">
+<img data-ez-role="img-mobile" loading="lazy" src="https://ecimg.cafe24img.com/pg2297b03275160041/zartkang/web/upload/NNEditor/20251021/8efc55a2d235996aad2b4cebf4d33edc.jpg">
+</picture>
+<div class="main_map_banner_txt_box">
+<div class="main_map_banner_txt">
+<div class="map_txt" data-ez-role="desc">
+<p><strong><span style="color: rgb(0, 0, 0);">주소</span></strong></p>
+<p>서울특별시 동작구 보라매로0길 00</p>
+<p><br></p>
+<p><br></p>
+<p><strong><span style="color: rgb(0, 0, 0);">운영시간</span></strong></p>
+<p>운영시간 : 오전 10시 ~ 오후 06시</p>
+<p>점심시간 : 오후 12시 ~ 오후 01시</p>
+</div><!-- //map_txt -->
+<div class="main_long_banner_link"><span class="displaynone" data-ez-role="address">서울특별시 동작구 보라매로0길 00</span><a data-ez-role="a" href="https://www.google.com/maps/dir/서울특별시%20동작구%20보라매로0길%2000" target="_blank">VIEW MORE</a></div>
+</div><!-- //main_map_banner_txt -->
+</div><!-- //main_long_banner_txt -->
+</div><!-- //main_map_banner -->
+</section>
+<section class="section service_cont" data-ez-module="html/1" data-ez-name="CUSTOM HTML" data-ez-type="plain" data-ez="contents-0xmru31-1" data-ez-display="hidden" style="display: none;">
+<div style="font-family: 돋움; font-size: small; text-align: -webkit-left;">
+	<strong>웹 도면 제작 프로그램 사용법</strong>
+<p>1. 나무 위에 마우스를 놓고 클릭하시면 [컷팅 생성 메뉴]가 나옵니다.</p><p>2. 모든 컷팅에는 톱날 두께 5mm 가 적용됩니다. 컷팅 생성시 모서리의 최소 길이는 1mm입니다.</p>
+<p>3. 컷팅을 드래그하면 위치를 조절하실 수 있습니다.</p>
+<p>4. 컷팅을 클릭하면 현재 컷팅이 고정 되며 [컷팅 편집 메뉴]가 나옵니다. [컷팅 편집 메뉴]가 보이는 상태에서 키보드의 화살표 키를 누르면 커팅을 1mm 간격으로 조절할 수 있습니다.</p>
+<p>5. 가로분할, 세로분할은 나무 조각의 왼쪽, 위쪽 모서리를 기준으로 하여 분할이 생성됩니다.</p>
+<p>6. 가로분할, 세로분할 시 잔여조각의 길이까지 입력할 필요가 없습니다. 그냥 원하시는 조각의 길이만 입력하시면 됩니다.</p>
+	<p>      예1) 가로 길이 2000mm 의 나무조각을 가로 100mm 나무조각 4개로 분할하고 싶으시면</p>
+   <p>      나무 클릭 -&gt; 메뉴에서 [세로 분할] 클릭 -&gt; 100*4 또는 100,100,100,100 입력</p>
+	<p>      예2) 가로 길이 1000mm의 나무조각을 가로 100mm 나무조각 2개, 가로 50mm 나무조각 4개로 분할하고 싶으시면</p>
+	<p>      100*2, 50*4 입력</p>
+<p>7. 목취도 화면에 문제가 생겼을 시, 다른 목취도를 선택했다가 다시 돌아오시면 됩니다. 만약 문제가 계속 발생하면 현재 목취도를 초기화한 후 컷팅을 새로 생성해주세요.</p>
+<p>8. 필수 조각으로 지정되지 않은 조각은, 치수를 정확하게 맞추지 않고 필수조각 재단 후 남는 규격을 그대로 보내드립니다. 목재 특성상, 제품의 규격 편차, 수축팽창, 톱날 소실 등 여러가지 사유로, 짜투리 부분의 규격까지 정확하게 나오지 않습니다.</p>
+
+    </div><br>
+	  <div align="center">
+		   <iframe src="https://www.daesanwood.com/00_webcad/index.html" frameborder="0" marginwidth="0" marginheight="0" width="100%" height="760" scrolling="no"></iframe>
+                </div>
+
+    </section>
+<section class="section service_cont" data-ez-module="html/1" data-ez-name="CUSTOM HTML" data-ez-type="plain" data-ez="contents-1jazvrw-1">
+<div style="font-family: 돋움; font-size: small; text-align: -webkit-left;">
+	<strong>웹 도면 제작 프로그램 사용법</strong>
+<p>1. 나무 위에 마우스를 놓고 클릭하시면 [컷팅 생성 메뉴]가 나옵니다.</p><p>2. 모든 컷팅에는 톱날 두께 5mm 가 적용됩니다. 컷팅 생성시 모서리의 최소 길이는 1mm입니다.</p>
+<p>3. 컷팅을 드래그하면 위치를 조절하실 수 있습니다.</p>
+<p>4. 컷팅을 클릭하면 현재 컷팅이 고정 되며 [컷팅 편집 메뉴]가 나옵니다. [컷팅 편집 메뉴]가 보이는 상태에서 키보드의 화살표 키를 누르면 커팅을 1mm 간격으로 조절할 수 있습니다.</p>
+<p>5. 가로분할, 세로분할은 나무 조각의 왼쪽, 위쪽 모서리를 기준으로 하여 분할이 생성됩니다.</p>
+<p>6. 가로분할, 세로분할 시 잔여조각의 길이까지 입력할 필요가 없습니다. 그냥 원하시는 조각의 길이만 입력하시면 됩니다.</p>
+	<p>      예1) 가로 길이 2000mm 의 나무조각을 가로 100mm 나무조각 4개로 분할하고 싶으시면</p>
+   <p>      나무 클릭 -&gt; 메뉴에서 [세로 분할] 클릭 -&gt; 100*4 또는 100,100,100,100 입력</p>
+	<p>      예2) 가로 길이 1000mm의 나무조각을 가로 100mm 나무조각 2개, 가로 50mm 나무조각 4개로 분할하고 싶으시면</p>
+	<p>      100*2, 50*4 입력</p>
+<p>7. 목취도 화면에 문제가 생겼을 시, 다른 목취도를 선택했다가 다시 돌아오시면 됩니다. 만약 문제가 계속 발생하면 현재 목취도를 초기화한 후 컷팅을 새로 생성해주세요.</p>
+<p>8. 필수 조각으로 지정되지 않은 조각은, 치수를 정확하게 맞추지 않고 필수조각 재단 후 남는 규격을 그대로 보내드립니다. 목재 특성상, 제품의 규격 편차, 수축팽창, 톱날 소실 등 여러가지 사유로, 짜투리 부분의 규격까지 정확하게 나오지 않습니다.</p>
+
+    </div><br>
+	  <div align="center">
+		   <iframe src="https://kangho-jun.github.io/wood-cutter/" frameborder="0" marginwidth="0" marginheight="0" width="100%" height="760" scrolling="no"></iframe>
+                </div>
+
+    </section>
+<!--@define(cmc_log)-->
+<!--#ez="1/4"-->

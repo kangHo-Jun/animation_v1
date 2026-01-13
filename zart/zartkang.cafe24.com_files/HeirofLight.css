@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "HeirofLight";
+  src: url("https://cafe24img.poxo.com/file.cafe24cos.com/aisg/resources/font/HeirofLight/HeirofLightRegular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "HeirofLight";
+  src: url("https://cafe24img.poxo.com/file.cafe24cos.com/aisg/resources/font/HeirofLight/HeirofLightBold.woff")
+    format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
