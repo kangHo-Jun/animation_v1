@@ -1,32 +1,47 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@js(/layout/basic/js/main.js)-->
 <!--@css(/layout/basic/css/main.css)-->
-<!-- 대장간 프리미엄 애니메이션 v1 시작 -->
+<!-- 몽땅자재 프리미엄 애니메이션 v2 시작 (Antigravity 테마) -->
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
 
-	.forge-hero {
+	.mongtang-hero {
 		position: relative;
 		width: 100%;
-		min-height: 600px;
+		min-height: 650px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: #050505;
+		background-color: #fcfcfc;
+		/* Off-white background */
 		overflow: hidden;
 		font-family: 'Outfit', 'Noto Sans KR', sans-serif;
 	}
 
-	#vanta-waves {
+	/* Grain Texture */
+	.mongtang-hero::before {
+		content: "";
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100% !important;
-		height: 100% !important;
+		width: 100%;
+		height: 100%;
+		background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');
+		opacity: 0.03;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	#magnetic-grid {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 		z-index: 0;
 	}
 
-	.forge-container {
+	.mongtang-container {
 		position: relative;
 		z-index: 10;
 		width: 90%;
@@ -35,127 +50,129 @@
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		color: #fff;
+		color: #1a1a1a;
+		/* Dark text for light theme */
 		pointer-events: none;
 	}
 
-	.forge-container>* {
+	.mongtang-container>* {
 		pointer-events: auto;
 	}
 
-	.forge-label {
-		font-size: 0.9rem;
-		letter-spacing: 0.3em;
-		color: #FFAB40;
+	.mongtang-label {
+		font-size: 0.85rem;
+		letter-spacing: 0.4em;
+		color: #0066FF;
+		/* Antigravity Blue */
 		font-weight: 700;
-		margin-bottom: 20px;
+		margin-bottom: 25px;
 		text-transform: uppercase;
 		opacity: 0;
-		animation: fadeInUp 0.8s forwards 0.2s;
+		animation: fadeInUp 1s forwards 0.2s;
 	}
 
-	.forge-title {
-		font-size: clamp(3rem, 10vw, 5.5rem);
+	.mongtang-title {
+		font-size: clamp(3.5rem, 12vw, 6rem);
 		font-weight: 900;
-		margin: 0 0 15px 0;
+		margin: 0 0 20px 0;
 		line-height: 1;
-		letter-spacing: -0.02em;
+		letter-spacing: -0.04em;
+		color: #000;
 		opacity: 0;
-		animation: fadeInUp 0.8s forwards 0.4s;
+		animation: fadeInUp 1s forwards 0.4s;
 	}
 
-	.forge-desc {
-		font-size: 1.1rem;
+	.mongtang-desc {
+		font-size: 1.2rem;
 		font-weight: 400;
 		opacity: 0;
-		margin-bottom: 40px;
-		letter-spacing: 0.05em;
-		color: rgba(255, 255, 255, 0.7);
-		animation: fadeInUp 0.8s forwards 0.6s;
+		margin-bottom: 45px;
+		letter-spacing: 0.02em;
+		color: #555;
+		animation: fadeInUp 1s forwards 0.6s;
 	}
 
-	/* SEARCH BAR STYLES */
-	.forge-search-form {
+	/* PREMIUM SEARCH BAR (Antigravity Style) */
+	.mongtang-search-form {
 		width: 100%;
-		max-width: 550px;
+		max-width: 580px;
 		margin-bottom: 50px;
 		opacity: 0;
-		animation: fadeInUp 0.8s forwards 0.8s;
+		animation: fadeInUp 1s forwards 0.8s;
 	}
 
-	.forge-search-container {
+	.mongtang-search-container {
 		position: relative;
 		display: flex;
 		align-items: center;
-		background: rgba(255, 255, 255, 0.05);
-		backdrop-filter: blur(15px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		border-radius: 50px;
-		padding: 5px 5px 5px 25px;
-		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		background: #fff;
+		border: 1px solid #e0e0e0;
+		border-radius: 100px;
+		padding: 5px 5px 5px 30px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+		transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
 
-	.forge-search-container:focus-within {
-		border-color: #FFAB40;
-		background: rgba(255, 255, 255, 0.1);
-		box-shadow: 0 0 30px rgba(255, 171, 64, 0.15);
-		transform: scale(1.02);
+	.mongtang-search-container:focus-within {
+		border-color: #0066FF;
+		box-shadow: 0 15px 40px rgba(0, 102, 255, 0.08);
+		transform: translateY(-2px);
 	}
 
-	.forge-search-input {
+	.mongtang-search-input {
 		flex: 1;
 		background: none;
 		border: none;
-		color: #fff;
-		font-size: 1.1rem;
-		outline: none;
-		padding: 12px 0;
-	}
-
-	.forge-search-input::placeholder {
-		color: rgba(255, 255, 255, 0.3);
-	}
-
-	.forge-search-btn {
-		background: #FFAB40;
-		border: none;
-		width: 48px;
-		height: 48px;
-		border-radius: 50%;
 		color: #000;
+		font-size: 1.15rem;
+		outline: none;
+		padding: 14px 0;
+		font-family: inherit;
+	}
+
+	.mongtang-search-input::placeholder {
+		color: #bbb;
+	}
+
+	.mongtang-search-btn {
+		background: #0066FF;
+		border: none;
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		color: #fff;
 		cursor: pointer;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: all 0.3s;
+		transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	}
 
-	.forge-search-btn i {
-		font-size: 1.2rem;
+	.mongtang-search-btn i {
+		font-size: 1.3rem;
 	}
 
-	.forge-search-btn:hover {
-		transform: rotate(90deg) scale(1.1);
-		background: #fff;
+	.mongtang-search-btn:hover {
+		transform: scale(1.1);
+		background: #000;
 	}
 
-	.forge-buttons {
+	.mongtang-buttons {
 		display: flex;
-		gap: 20px;
+		gap: 15px;
 		width: 100%;
 		max-width: 600px;
 		opacity: 0;
-		animation: fadeInUp 0.8s forwards 1s;
+		animation: fadeInUp 1s forwards 1s;
 	}
 
-	.forge-btn {
+	.mongtang-btn {
 		flex: 1;
 		padding: 22px;
-		background: rgba(255, 255, 255, 0.03);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		backdrop-filter: blur(15px);
-		border-radius: 12px;
-		color: #fff;
+		background: #fff;
+		border: 1px solid #eee;
+		border-radius: 14px;
+		color: #000;
 		text-decoration: none;
 		font-weight: 700;
 		font-size: 1.1rem;
@@ -163,30 +180,31 @@
 		align-items: center;
 		justify-content: center;
 		gap: 12px;
-		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 	}
 
-	.forge-btn i {
+	.mongtang-btn i {
 		font-size: 1.2rem;
-		color: #FFAB40;
+		color: #0066FF;
 		transition: transform 0.3s;
 	}
 
-	.forge-btn:hover {
-		background: rgba(255, 255, 255, 0.08);
-		border-color: #FFAB40;
+	.mongtang-btn:hover {
+		background: #fdfdfd;
+		border-color: #0066FF;
 		transform: translateY(-5px);
-		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 	}
 
-	.forge-btn:hover i {
-		transform: scale(1.2);
+	.mongtang-btn:hover i {
+		transform: translateX(3px);
 	}
 
 	@keyframes fadeInUp {
 		from {
 			opacity: 0;
-			transform: translateY(30px);
+			transform: translateY(40px);
 		}
 
 		to {
@@ -196,73 +214,156 @@
 	}
 
 	@media (max-width: 768px) {
-		.forge-buttons {
+		.mongtang-buttons {
 			flex-direction: column;
 			gap: 12px;
 		}
 
-		.forge-hero {
-			min-height: 650px;
+		.mongtang-hero {
+			min-height: 700px;
 		}
 
-		.forge-title {
-			font-size: 3rem;
+		.mongtang-title {
+			font-size: 3.5rem;
 		}
 
-		.forge-search-form {
+		.mongtang-search-form {
 			width: 95%;
-			margin-bottom: 40px;
 		}
 	}
 </style>
 
-<section class="forge-hero">
-	<div id="vanta-waves"></div>
-	<div class="forge-container">
-		<span class="forge-label">Premium Tools & Craft</span>
-		<h1 class="forge-title">대장간</h1>
-		<p class="forge-desc">장인의 정신으로 빚어낸 완벽한 결과물</p>
+<section class="mongtang-hero">
+	<canvas id="magnetic-grid"></canvas>
+	<div class="mongtang-container">
+		<span class="mongtang-label">The Future of Materials</span>
+		<h1 class="mongtang-title">몽땅자재</h1>
+		<p class="mongtang-desc">상상을 현실로 만드는 모든 자재가 모인 곳</p>
 
-		<!-- 프리미엄 검색창 -->
-		<form class="forge-search-form" action="https://zartkang.cafe24.com/product/search.html" method="get">
-			<div class="forge-search-container">
-				<input type="text" name="keyword" class="forge-search-input" placeholder="필요한자재를 검색해보세요..." required>
-				<button type="submit" class="forge-search-btn">
-					<i class="fas fa-search"></i>
+		<form class="mongtang-search-form" action="https://zartkang.cafe24.com/product/search.html" method="get">
+			<div class="mongtang-search-container">
+				<input type="text" name="keyword" class="mongtang-search-input" placeholder="필요한 자재를 검색해보세요..."
+					required>
+				<button type="submit" class="mongtang-search-btn">
+					<i class="fas fa-arrow-right"></i>
 				</button>
 			</div>
 		</form>
 
-		<div class="forge-buttons">
-			<a href="https://kangho-jun.github.io/web_cadalog/" target="_blank" class="forge-btn">
-				<i class="fas fa-th-large"></i>
+		<div class="mongtang-buttons">
+			<a href="https://kangho-jun.github.io/web_cadalog/" target="_blank" class="mongtang-btn">
+				<i class="fas fa-cubes"></i>
 				<span>전체상품</span>
 			</a>
-			<a href="https://kangho-jun.github.io/web_cadalog/" target="_blank" class="forge-btn">
-				<i class="fas fa-file-invoice-dollar"></i>
+			<a href="https://kangho-jun.github.io/web_cadalog/" target="_blank" class="mongtang-btn">
+				<i class="fas fa-file-invoice"></i>
 				<span>최신 단가표</span>
 			</a>
 		</div>
 	</div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
 <script>
-	function startForgeVanta() {
-		if (typeof VANTA !== 'undefined') {
-			VANTA.WAVES({
-				el: "#vanta-waves",
-				mouseControls: true, touchControls: true, gyroControls: false,
-				minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00,
-				color: 0x080808, shininess: 35.00, waveHeight: 20.00, waveSpeed: 0.80, zoom: 0.95
-			});
+	/**
+	 * MAGNETIC GRID ENGINE (Antigravity Theme)
+	 * Direct Canvas API Implementation
+	 */
+	const canvas = document.getElementById('magnetic-grid');
+	const ctx = canvas.getContext('2d');
+	let width, height, rows, cols;
+	const spacing = 45; // Grid spacing
+	const dashLength = 12; // Length of each dash
+	const particles = [];
+	let mouse = { x: -1000, y: -1000 };
+
+	function init() {
+		resize();
+		createParticles();
+		animate();
+	}
+
+	function resize() {
+		width = canvas.width = window.innerWidth;
+		height = canvas.height = canvas.parentElement.offsetHeight;
+		cols = Math.floor(width / spacing) + 2;
+		rows = Math.floor(height / spacing) + 2;
+	}
+
+	function createParticles() {
+		particles.length = 0;
+		for (let i = 0; i < cols; i++) {
+			for (let j = 0; j < rows; j++) {
+				particles.push({
+					baseX: i * spacing,
+					baseY: j * spacing,
+					x: i * spacing,
+					y: j * spacing,
+					targetX: i * spacing,
+					targetY: j * spacing,
+					stretch: 1
+				});
+			}
 		}
 	}
-	if (document.readyState === 'complete') { startForgeVanta(); }
-	else { window.addEventListener('load', startForgeVanta); }
+
+	function animate() {
+		ctx.clearRect(0, 0, width, height);
+
+		ctx.strokeStyle = '#0066FF'; // Electric Blue
+		ctx.lineWidth = 1.5;
+		ctx.lineCap = 'round';
+
+		particles.forEach(p => {
+			const dx = mouse.x - p.baseX;
+			const dy = mouse.y - p.baseY;
+			const dist = Math.sqrt(dx * dx + dy * dy);
+			const maxDist = 350;
+
+			if (dist < maxDist) {
+				const force = (maxDist - dist) / maxDist;
+				const angle = Math.atan2(dy, dx);
+
+				// Rotation and Stretching logic
+				p.x = p.baseX + Math.cos(angle) * force * 20;
+				p.y = p.baseY + Math.sin(angle) * force * 20;
+				p.stretch = 1 + force * 2.5;
+				p.angle = angle;
+			} else {
+				p.x += (p.baseX - p.x) * 0.1;
+				p.y += (p.baseY - p.y) * 0.1;
+				p.stretch += (1 - p.stretch) * 0.1;
+				p.angle = 0;
+			}
+
+			// Draw particle (dash)
+			ctx.save();
+			ctx.translate(p.x, p.y);
+			if (dist < maxDist) ctx.rotate(p.angle);
+
+			ctx.beginPath();
+			ctx.moveTo(-dashLength / 2 * p.stretch, 0);
+			ctx.lineTo(dashLength / 2 * p.stretch, 0);
+			ctx.stroke();
+			ctx.restore();
+		});
+
+		requestAnimationFrame(animate);
+	}
+
+	window.addEventListener('mousemove', e => {
+		const rect = canvas.getBoundingClientRect();
+		mouse.x = e.clientX - rect.left;
+		mouse.y = e.clientY - rect.top;
+	});
+
+	window.addEventListener('resize', () => {
+		resize();
+		createParticles();
+	});
+
+	init();
 </script>
-<!-- 대장간 프리미엄 애니메이션 v1 끝 -->
+<!-- 몽땅자재 프리미엄 애니메이션 v2 끝 -->
 
 <section class="section main_product_list" data-ez-initialized data-ez-layout="grid4" data-ez-module="product-list/1"
 	data-ez="contents-0wj12i1-1">
@@ -562,13 +663,11 @@
 		<p>7. 목취도 화면에 문제가 생겼을 시, 다른 목취도를 선택했다가 다시 돌아오시면 됩니다. 만약 문제가 계속 발생하면 현재 목취도를 초기화한 후 컷팅을 새로 생성해주세요.</p>
 		<p>8. 필수 조각으로 지정되지 않은 조각은, 치수를 정확하게 맞추지 않고 필수조각 재단 후 남는 규격을 그대로 보내드립니다. 목재 특성상, 제품의 규격 편차, 수축팽창, 톱날 소실 등 여러가지
 			사유로, 짜투리 부분의 규격까지 정확하게 나오지 않습니다.</p>
-
 	</div><br>
 	<div align="center">
 		<iframe src="https://www.daesanwood.com/00_webcad/index.html" frameborder="0" marginwidth="0" marginheight="0"
 			width="100%" height="760" scrolling="no"></iframe>
 	</div>
-
 </section>
 <section class="section service_cont" data-ez-module="html/1" data-ez-name="CUSTOM HTML" data-ez-type="plain"
 	data-ez="contents-1jazvrw-1">
@@ -587,13 +686,11 @@
 		<p>7. 목취도 화면에 문제가 생겼을 시, 다른 목취도를 선택했다가 다시 돌아오시면 됩니다. 만약 문제가 계속 발생하면 현재 목취도를 초기화한 후 컷팅을 새로 생성해주세요.</p>
 		<p>8. 필수 조각으로 지정되지 않은 조각은, 치수를 정확하게 맞추지 않고 필수조각 재단 후 남는 규격을 그대로 보내드립니다. 목재 특성상, 제품의 규격 편차, 수축팽창, 톱날 소실 등 여러가지
 			사유로, 짜투리 부분의 규격까지 정확하게 나오지 않습니다.</p>
-
 	</div><br>
 	<div align="center">
 		<iframe src="https://kangho-jun.github.io/wood-cutter/" frameborder="0" marginwidth="0" marginheight="0"
 			width="100%" height="760" scrolling="no"></iframe>
 	</div>
-
 </section>
 <!--@define(cmc_log)-->
 <!--#ez="1/4"-->
