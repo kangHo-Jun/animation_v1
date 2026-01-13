@@ -1,7 +1,7 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@js(/layout/basic/js/main.js)-->
 <!--@css(/layout/basic/css/main.css)-->
-<!-- 몽땅자재 프리미엄 애니메이션 v2.2 시작 (Definitive Antigravity) -->
+<!-- 몽땅자재 프리미엄 애니메이션 v2.4 시작 (Pure Dots Repulse) -->
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;900&display=swap');
 
@@ -13,7 +13,6 @@
 		align-items: center;
 		justify-content: center;
 		background-color: #ffffff;
-		/* Pure White */
 		overflow: hidden;
 		font-family: 'Outfit', 'Noto Sans KR', sans-serif;
 	}
@@ -32,13 +31,15 @@
 		z-index: 2;
 	}
 
-	#magnetic-grid {
+	#vanta-dots-bg {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+		pointer-events: none;
+		/* 카페24 레이아웃 클릭 방해 방지 */
 	}
 
 	.mongtang-container {
@@ -62,7 +63,6 @@
 		font-size: 0.85rem;
 		letter-spacing: 0.4em;
 		color: #70757a;
-		/* Subtle Gray */
 		font-weight: 500;
 		margin-bottom: 25px;
 		text-transform: uppercase;
@@ -73,7 +73,6 @@
 	.mongtang-title {
 		font-size: clamp(3.5rem, 12vw, 7rem);
 		font-weight: 500;
-		/* Minimal thickness like Antigravity */
 		margin: 0 0 20px 0;
 		line-height: 0.95;
 		letter-spacing: -0.05em;
@@ -92,7 +91,7 @@
 		animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards 0.6s;
 	}
 
-	/* PREMIUM SEARCH PILL (Exact Antigravity Style) */
+	/* PREMIUM SEARCH PILL */
 	.mongtang-search-form {
 		width: 100%;
 		max-width: 620px;
@@ -106,7 +105,6 @@
 		display: flex;
 		align-items: center;
 		background: #f1f3f4;
-		/* Subtle Gray Background */
 		border-radius: 999px;
 		padding: 6px 6px 6px 35px;
 		border: 1px solid transparent;
@@ -121,7 +119,6 @@
 		background: #ffffff;
 		border-color: #dfe1e5;
 		box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-		transform: scale(1.01);
 	}
 
 	.mongtang-search-input {
@@ -193,7 +190,6 @@
 	.mongtang-btn i {
 		font-size: 1.1rem;
 		color: #1a73e8;
-		/* Google Blue */
 	}
 
 	.mongtang-btn:hover {
@@ -236,7 +232,7 @@
 </style>
 
 <section class="mongtang-hero">
-	<canvas id="magnetic-grid"></canvas>
+	<div id="vanta-dots-bg"></div>
 	<div class="mongtang-container">
 		<span class="mongtang-label">The Future of Materials</span>
 		<h1 class="mongtang-title">몽땅자재</h1>
@@ -264,121 +260,38 @@
 	</div>
 </section>
 
+<!-- VANTA LIBRARIES -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+
 <script>
 	/**
-	 * MAGNETIC FLOW FIELD ENGINE v2.2 (Antigravity Fidelity)
-	 * Features segment particles with organic rotation and inertia.
+	 * VANTA DOTS REDESIGN v2.4 (Pure Dots Repulse)
+	 * Explicitly disabled lines to ensure a clean dot-based aesthetic.
 	 */
-	const canvas = document.getElementById('magnetic-grid');
-	const ctx = canvas.getContext('2d');
-	let width, height, rows, cols;
-	const spacing = 52;
-	const dashBaseLength = 6;
-	const particles = [];
-	let mouse = { x: -2000, y: -2000 };
-
-	function init() {
-		resize();
-		createParticles();
-		animate();
-	}
-
-	function resize() {
-		width = canvas.width = window.innerWidth;
-		height = canvas.height = canvas.parentElement.offsetHeight;
-		cols = Math.ceil(width / spacing) + 1;
-		rows = Math.ceil(height / spacing) + 1;
-		canvas.style.width = width + 'px';
-		canvas.style.height = height + 'px';
-	}
-
-	function createParticles() {
-		particles.length = 0;
-		for (let i = 0; i < cols; i++) {
-			for (let j = 0; j < rows; j++) {
-				particles.push({
-					baseX: i * spacing,
-					baseY: j * spacing,
-					x: i * spacing,
-					y: j * spacing,
-					vx: 0,
-					vy: 0,
-					angle: 0,
-					currentAngle: 0,
-					length: dashBaseLength,
-					opacity: 0.15
-				});
-			}
+	document.addEventListener('DOMContentLoaded', function () {
+		try {
+			VANTA.DOTS({
+				el: "#vanta-dots-bg",
+				mouseControls: true,
+				touchControls: true,
+				gyroControls: false,
+				minHeight: 200.00,
+				minWidth: 200.00,
+				scale: 1.00,
+				scaleMobile: 1.00,
+				color: 0x303030,
+				backgroundColor: 0xffffff,
+				size: 3.50,
+				spacing: 70.00, // Even more air for extreme minimalism
+				showLines: false // PURE DOTS
+			});
+		} catch (err) {
+			console.error("Vanta Dots initialization failed:", err);
 		}
-	}
-
-	function animate() {
-		ctx.clearRect(0, 0, width, height);
-
-		particles.forEach(p => {
-			const dx = mouse.x - p.baseX;
-			const dy = mouse.y - p.baseY;
-			const dist = Math.sqrt(dx * dx + dy * dy);
-			const maxDist = 450;
-
-			if (dist < maxDist) {
-				const force = (maxDist - dist) / maxDist;
-				const targetAngle = Math.atan2(dy, dx);
-
-				// Smooth Angle Interpolation
-				let angleDiff = targetAngle - p.currentAngle;
-				while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
-				while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
-				p.currentAngle += angleDiff * 0.1;
-
-				// Position Inertia
-				const tx = p.baseX + Math.cos(targetAngle) * force * 35;
-				const ty = p.baseY + Math.sin(targetAngle) * force * 35;
-				p.x += (tx - p.x) * 0.08;
-				p.y += (ty - p.y) * 0.08;
-
-				p.length = dashBaseLength + force * 22;
-				p.opacity = 0.15 + force * 0.35;
-			} else {
-				p.x += (p.baseX - p.x) * 0.1;
-				p.y += (p.baseY - p.y) * 0.1;
-				p.currentAngle *= 0.92;
-				p.length += (dashBaseLength - p.length) * 0.1;
-				p.opacity += (0.15 - p.opacity) * 0.1;
-			}
-
-			// Render Segment
-			ctx.save();
-			ctx.translate(p.x, p.y);
-			ctx.rotate(p.currentAngle);
-
-			ctx.beginPath();
-			ctx.strokeStyle = `rgba(138, 180, 248, ${p.opacity})`; // Soft Blue-Gray
-			ctx.lineWidth = 2.5;
-			ctx.lineCap = 'round';
-			ctx.moveTo(-p.length / 2, 0);
-			ctx.lineTo(p.length / 2, 0);
-			ctx.stroke();
-			ctx.restore();
-		});
-
-		requestAnimationFrame(animate);
-	}
-
-	window.addEventListener('mousemove', e => {
-		const rect = canvas.getBoundingClientRect();
-		mouse.x = e.clientX - rect.left;
-		mouse.y = e.clientY - rect.top;
 	});
-
-	window.addEventListener('resize', () => {
-		resize();
-		createParticles();
-	});
-
-	init();
 </script>
-<!-- 몽땅자재 프리미엄 애니메이션 v2.2 끝 -->
+<!-- 몽땅자재 프리미엄 애니메이션 v2.4 끝 -->
 
 <section class="section main_product_list" data-ez-initialized data-ez-layout="grid4" data-ez-module="product-list/1"
 	data-ez="contents-0wj12i1-1">
